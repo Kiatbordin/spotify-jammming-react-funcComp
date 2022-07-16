@@ -21,6 +21,10 @@ function App() {
     // { name: 'KenPlaylistName2', artist: 'KenPlaylistArtist2', album: 'KenPlaylistAlbum2', id: 12 }
   ]);
 
+  useEffect(()=>{
+    Spotify.getAccessToken();
+  },[]);
+
   const addTrack = (track) => {
     let tracks = playlistTracks;
     // Comparing received track Id with each saved track id using find in arr method

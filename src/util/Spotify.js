@@ -1,6 +1,6 @@
 // Example of Spotify URI ==> spotify:track:6p97hkQab7XlZFLRI8OO1B
-const clientId = "34e952052f3f4f479a6c65a59156d860"; // testing Spot App Acc
-const redirectUri = 'http://localhost:3000/';
+const clientId = "34e952052f3f4f479a6c65a59156d860"; // Change to your Client ID.
+const redirectUri = 'http://localhost:3000/';   //  Change to your redirect uRL.
 
 let accessToken ;
 
