@@ -5,14 +5,14 @@ import { SearchBar } from "../SearchBar/SeachBar.js";
 import { SearchResults } from "../SearchResults/SearchResults.js"
 import { Playlist } from "../Playlist/Playlist.js";
 
-import Spotify from "../../util/Spotify.js";
+import Spotify from "../../util/Spotify.js"; // Using myown spotify js
+// import Spotify from "../../util/Spotify-H.js"; // Not working.. due to difference Arg. Required.
 
 function App() {
 
   const [searchResults, setSearchResults] = useState([
     // { name: "name1", artist: "artist1", album: "album1", id: 1 },
     // { name: "name2", artist: "artist2", album: "album2", id: 2 },
-    // { name: "name3", artist: "artist3", album: "album3", id: 3 }
   ]);
 
   const [playlistName,setPlaylistName] = useState('');
@@ -36,19 +36,22 @@ function App() {
   }
 
   const removeTrack = (track) => {
-    let tracks = playlistTracks;
-    // Comparing received track Id with each saved playlist track id using filter in arr method
-    setPlaylistTracks( prev => tracks.filter(savedPlaylistTrack=> savedPlaylistTrack.id!==track.id) )
+    let tracks = playlistTracks; // Comparing received track Id with each saved playlist track id using filter in arr method
+    setPlaylistTracks( tracks.filter(savedPlaylistTrack=> savedPlaylistTrack.id!==track.id) )
   }
 
   const updatePlaylistName = (name) => {
-    setPlaylistName( prev => name );
-    // setPlaylistName( name );
-    // alert(playlistName);
+    setPlaylistName( name );
   } 
 
   const savePlaylist = () => {
     // alert('This method has linked to the button correctly.')
+
+    if(playlistTracks.length==0) {
+      alert('No track in Playlist')
+      return;
+    }
+
     const trackURIs = playlistTracks.map( track => track.uri );
     // console.log(trackURIs);
     try 
@@ -69,9 +72,7 @@ function App() {
     // alert(term);
     // alert(searchResults);
     Spotify.search(term)
-    // .then( (response) => alert(response[0].name))
     .then(termSearchResults => {
-      // setSearchResults( prev => [...prev,termSearchResults]);  // no need to keep previous state.
       setSearchResults( termSearchResults );
     })
     // alert(searchResults);

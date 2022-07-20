@@ -24,7 +24,7 @@ const Spotify = {
             accessToken = accessTokenMatch[1];
             const expiresIn = Number(expiresInMatch[1]); // Using Number's Method to convert to number type
 
-            //This Clear the parameters from the URL, so the app doesn’t try grabbing the access token after it has expired
+            //Tasks below will Clear the parameters from the URL, so the app doesn’t try grabbing the access token after it has expired
 
             // Set timeout using number of seconds from expiresIn to clear the accessToken value.
             window.setTimeout(() => accessToken = '', expiresIn * 1000);
@@ -33,6 +33,7 @@ const Spotify = {
             window.history.pushState('Access Token', null, '/');
             return accessToken;
         } else {
+            // Will redirect to your redirect uRL in case you don't have an accessToken
             const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
             window.location = accessUrl;
         }

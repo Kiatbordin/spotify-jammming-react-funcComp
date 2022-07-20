@@ -10,7 +10,7 @@ export function SearchBar(props) {
     }
 
     const handleTermChange = ({target}) => {
-      setTerm( prev => target.value );
+      setTerm( target.value );
     }
 
     return (
