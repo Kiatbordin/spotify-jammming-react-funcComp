@@ -48,7 +48,7 @@ function App() {
   const savePlaylist = () => {
     // alert('This method has linked to the button correctly.')
 
-    if(playlistTracks.length==0) {
+    if(playlistTracks.length===0) {
       alert('No track in Playlist')
       return;
     }
