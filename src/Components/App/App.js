@@ -6,7 +6,8 @@ import { SearchResults } from "../SearchResults/SearchResults.js"
 import { Playlist } from "../Playlist/Playlist.js";
 
 import Spotify from "../../util/Spotify.js"; // Using myown spotify js
-// import Spotify from "../../util/Spotify-H.js"; // Not working.. due to difference Arg. Required.
+// import Spotify from "../../util/Spotify-H.js"; // Working after change the fetch's Body from trackID to URI.
+
 
 function App() {
 
